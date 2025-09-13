@@ -18,8 +18,8 @@
   <body class="bg-black text-white font-sans">
     <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50">
-      <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-        <h1 class="text-2xl font-bold">MyPortfolio</h1>
+      <div class="max-w-10xl mx-auto flex justify-between items-center p-4">
+        <h1 class="text-5xl font-bold">MyPortfolio</h1>
 
         <!-- Menu desktop -->
         <ul class="hidden md:flex space-x-6">
@@ -32,7 +32,7 @@
         <!-- Tombol hamburger (muncul di hp) -->
         <button
           id="menu-btn"
-          class="block md:hidden text-white text-3xl focus:outline-none"
+          class="block md:hidden text-white text-5xl focus:outline-none"
         >
           ☰
         </button>
@@ -214,7 +214,6 @@
         <h2 class="text-4xl font-bold mb-12">⚡ Skills</h2>
 
         <div class="flex flex-wrap justify-center gap-12">
-          <!-- HTML/CSS -->
           <div
             class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
           >
@@ -402,25 +401,160 @@
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="max-w-6xl mx-auto py-20 px-6">
-      <h2 class="text-3xl font-bold mb-6 border-b border-gray-700 inline-block">
-        Projects
-      </h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div
-          class="border border-gray-700 p-6 rounded-xl hover:bg-white hover:text-black transition"
-        >
-          <h3 class="text-xl font-bold mb-2">Dapur Fauzan</h3>
-          <p class="text-gray-300">Web katering berbasis Laravel 11.</p>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-black text-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img
+              src="https://via.placeholder.com/400x250"
+              alt="Project 1"
+              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
+            >
+              <h3 class="text-2xl font-bold mb-2">Portfolio Website</h3>
+              <p class="text-gray-300 mb-4 px-4">
+                Website pribadi modern dengan Tailwind CSS & animasi typing.
+              </p>
+              <div class="space-x-4">
+                <a
+                  href="#"
+                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
+                  >Demo</a
+                >
+                <a
+                  href="#"
+                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
+                  >Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img
+              src="https://via.placeholder.com/400x250"
+              alt="Project 2"
+              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
+            >
+              <h3 class="text-2xl font-bold mb-2">Catering App</h3>
+              <p class="text-gray-300 mb-4 px-4">
+                Sistem pemesanan katering berbasis Laravel 11.
+              </p>
+              <div class="space-x-4">
+                <a
+                  href="#"
+                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
+                  >Demo</a
+                >
+                <a
+                  href="#"
+                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
+                  >Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img
+              src="gambar.jpg"
+              alt="Project 3"
+              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
+            >
+              <h3 class="text-2xl font-bold mb-2">TakeGo App</h3>
+              <p class="text-gray-300 mb-4 px-4">
+                Aplikasi transportasi mirip Grab, dibuat dengan Kotlin.
+              </p>
+              <div class="space-x-4">
+                <a
+                  href="#"
+                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
+                  >Demo</a
+                >
+                <a
+                  href="#"
+                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
+                  >Code</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <div
-          class="border border-gray-700 p-6 rounded-xl hover:bg-white hover:text-black transition"
-        >
-          <h3 class="text-xl font-bold mb-2">TakeGo</h3>
-          <p class="text-gray-300">
-            Aplikasi transportasi online versi UAS dengan Kotlin.
-          </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-black text-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-12">Experience</h2>
+
+        <div class="relative border-l-2 border-gray-600">
+          <!-- Timeline item -->
+          <div class="mb-10 ml-6">
+            <div
+              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600"
+            ></div>
+            <h3 class="text-xl font-semibold">Internship - IT Support</h3>
+            <p class="text-gray-400 text-sm">Jan 2024 - Jun 2024</p>
+            <p class="mt-2 text-gray-300">
+              Membantu maintenance jaringan, install software, serta
+              troubleshooting hardware.
+            </p>
+          </div>
+
+          <!-- Timeline item -->
+          <div class="mb-10 ml-6">
+            <div
+              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600"
+            ></div>
+            <h3 class="text-xl font-semibold">Freelance - Web Developer</h3>
+            <p class="text-gray-400 text-sm">Jul 2024 - Saat ini</p>
+            <p class="mt-2 text-gray-300">
+              Mengerjakan beberapa proyek website portofolio, sistem booking,
+              dan aplikasi sederhana.
+            </p>
+          </div>
+
+          <!-- Timeline item -->
+          <div class="ml-6">
+            <div
+              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600"
+            ></div>
+            <h3 class="text-xl font-semibold">Freelance - Laptop Service</h3>
+            <p class="text-gray-400 text-sm">2025 - Saat ini</p>
+            <p class="mt-2 text-gray-300">
+              Melayani kebutuhan servis laptop, upgrade hardware, dan instalasi
+              software.
+            </p>
+          </div>
+
+          <div class="ml-6">
+            <div
+              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600"
+            ></div>
+            <h3 class="text-xl font-semibold">
+              Volunteer - Ekonomi Pariwisata
+            </h3>
+            <p class="text-gray-400 text-sm">Januari 2025</p>
+            <p class="mt-2 text-gray-300">
+              Membantu UMKM memajukan usaha mereka melalui digitalisasi dengan
+              membuatkan landing page sederhana
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -440,8 +574,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-6 border-t border-gray-800">
+    <!-- <footer class="text-center py-6 border-t border-gray-800">
       <p class="text-gray-500">© 2025 Your Name. All rights reserved.</p>
-    </footer>
+    </footer> -->
   </body>
 </html>

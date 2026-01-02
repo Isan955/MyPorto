@@ -1,588 +1,739 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Hasan | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body class="bg-black text-white font-sans">
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50">
-      <div class="max-w-10xl mx-auto flex justify-between items-center p-4">
-        <h1 class="text-2xl font-bold">MyPortfolio</h1>
 
-        <ul class="hidden md:flex space-x-6">
-          <li><a href="#about" class="hover:text-gray-400">About</a></li>
-          <li><a href="#skills" class="hover:text-gray-400">Skills</a></li>
-          <li><a href="#projects" class="hover:text-gray-400">Projects</a></li>
-          <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+    <style>
+      /* Animasi Muncul Saat Scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Efek Kursor Mengetik */
+      .typing::after {
+        content: "|";
+        animation: blink 0.7s infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0a0a0a] text-white font-sans selection:bg-white selection:text-black"
+  >
+    <nav
+      class="fixed top-0 w-full bg-black/60 backdrop-blur-md z-[100] border-b border-white/10"
+    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-5">
+        <a href="#" class="flex items-center group">
+          <div
+            class="flex items-center justify-center w-7 h-7 border border-white/80 rounded-lg bg-white/5 mr-3 transition-all duration-300 group-hover:border-white group-hover:bg-white/10"
+          >
+            <i
+              class="fas fa-terminal text-[10px] text-gray-400 group-hover:text-white transition-colors"
+            ></i>
+          </div>
+          <h1 class="text-xl font-black tracking-tighter italic text-white">
+            HASAN<span
+              class="text-gray-500 group-hover:text-white transition-colors"
+              >.</span
+            >
+          </h1>
+        </a>
+
+        <ul
+          class="hidden md:flex space-x-10 text-xs uppercase tracking-[0.3em] font-bold"
+        >
+          <li>
+            <a href="#about" class="text-gray-400 hover:text-white transition"
+              >About</a
+            >
+          </li>
+          <!-- <li>
+            <a href="#skills" class="text-gray-400 hover:text-white transition"
+              >Skills</a
+            >
+          </li> -->
+          <li>
+            <a
+              href="#projects"
+              class="text-gray-400 hover:text-white transition"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="text-gray-400 hover:text-white transition"
+              >Contact</a
+            >
+          </li>
         </ul>
 
-        <button
-          id="menu-btn"
-          class="block md:hidden text-white text-3xl focus:outline-none"
-        >
-          ☰
-        </button>
+        <button id="menu-btn" class="md:hidden text-2xl text-white">☰</button>
       </div>
     </nav>
 
     <div
       id="sidebar"
-      class="fixed top-0 left-[-250px] w-64 h-full bg-black/90 backdrop-blur-sm z-50 transition-all duration-300"
+      class="fixed top-0 left-[-100%] w-full h-full bg-black z-[101] flex flex-col items-center justify-center space-y-10 text-2xl uppercase tracking-[0.4em] font-black italic transition-all duration-500"
     >
-      <button id="close-btn" class="text-white text-2xl p-4">✕</button>
-      <ul class="flex flex-col space-y-6 p-6">
-        <li><a href="#about" class="hover:text-gray-400">About</a></li>
-        <li><a href="#skills" class="hover:text-gray-400">Skills</a></li>
-        <li><a href="#projects" class="hover:text-gray-400">Projects</a></li>
-        <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
-      </ul>
+      <button
+        id="close-btn"
+        class="absolute top-10 right-10 text-3xl text-white"
+      >
+        ✕
+      </button>
+
+      <a href="#about" class="nav-link hover:text-gray-500 transition">About</a>
+      <!-- <a href="#skills" class="nav-link hover:text-gray-500 transition"
+        >Skills</a
+      > -->
+      <a href="#projects" class="nav-link hover:text-gray-500 transition"
+        >Projects</a
+      >
+      <a href="#contact" class="nav-link hover:text-gray-500 transition"
+        >Contact</a
+      >
     </div>
+
+    <section
+      class="relative flex flex-col items-center justify-center h-screen text-center px-6 overflow-hidden"
+    >
+      <div
+        class="absolute w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] -z-10"
+      ></div>
+
+      <div class="reveal active">
+        <h2 class="text-gray-500 uppercase tracking-[0.5em] text-sm mb-4">
+          Cyber Security & Web Dev
+        </h2>
+        <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6">
+          HELLO, I'M <br />
+          <span class="text-gray-400 typing"></span>
+        </h1>
+        <!-- <p
+          class="max-w-xl mx-auto text-gray-400 text-lg md:text-xl font-light leading-relaxed"
+        >
+          Membangun infrastruktur digital yang
+          <span class="text-white border-b border-white">estetik</span> dan
+          <span class="text-white border-b border-white">aman</span>.
+        </p> -->
+
+        <div
+          class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="#projects"
+            class="w-full md:w-auto px-10 py-4 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition-all transform hover:scale-105"
+          >
+            View Projects
+          </a>
+          <a
+            href="#contact"
+            class="w-full md:w-auto px-10 py-4 border border-white/20 font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all transform hover:scale-105"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-10 flex space-x-8 text-xl text-gray-500 reveal"
+      >
+        <a
+          href="https://github.com/Isan955"
+          target="_blank"
+          class="hover:text-white transition transform hover:-translate-y-1"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/muhammad-hasanuddin-aa77862ba/"
+          target="_blank"
+          class="hover:text-white transition transform hover:-translate-y-1"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://instagram.com/hasannothusein"
+          target="_blank"
+          class="hover:text-white transition transform hover:-translate-y-1"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </section>
+
+    <section id="about" class="py-32 bg-[#0a0a0a]">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="reveal mb-10">
+          <h2
+            class="text-5xl md:text-7xl font-black tracking-tighter italic uppercase text-white"
+          >
+            Hasan<span class="text-gray-600">.</span>
+          </h2>
+        </div>
+
+        <div
+          class="reveal space-y-8 text-gray-400 text-lg md:text-xl leading-relaxed font-light"
+        >
+          <p>
+            Hi, I am
+            <span class="text-white font-medium">Muhammad Hasanuddin</span>.
+            Currently a student in Informatics Engineering focusing on the
+            intersection of design and security.
+          </p>
+
+          <p>
+            Technology is my passion and dreaming about a better world with it
+            and making it happen is a dream come true. I am generally into
+            <span
+              class="text-white border-b border-white/20 hover:border-white transition"
+              >web dev things</span
+            >
+            but over the past few months I have begun learning about
+            <span class="italic text-white">cyber security</span> to build more
+            resilient digital infrastructures.
+          </p>
+
+          <p>
+            Outside coding, I often spend my time analyzing system
+            vulnerabilities or exploring the latest web technologies. I live in
+            Indonesia, so in case you're around don't hesitate to contact me,
+            perhaps we'll grab some coffee or do some collaboration.
+          </p>
+        </div>
+
+        <div class="reveal my-16">
+          <div
+            class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          ></div>
+        </div>
+
+        <div
+          class="reveal flex flex-col md:flex-row md:items-center gap-6 md:gap-12"
+        >
+          <span
+            class="text-xs font-bold uppercase tracking-[0.4em] text-gray-500"
+            >Find me on</span
+          >
+
+          <div class="flex flex-wrap gap-8 items-center">
+            <a
+              href="https://github.com/Isan955"
+              target="_blank"
+              class="group flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-400 hover:text-white transition"
+            >
+              <i class="fab fa-github group-hover:scale-110 transition"></i>
+              Github
+            </a>
+            <a
+              href="https://www.linkedin.com/in/muhammad-hasanuddin-aa77862ba/"
+              target="_blank"
+              class="group flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-400 hover:text-white transition"
+            >
+              <i class="fab fa-linkedin group-hover:scale-110 transition"></i>
+              LinkedIn
+            </a>
+            <a
+              href="https://instagram.com/hasannn.py"
+              target="_blank"
+              class="group flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-400 hover:text-white transition"
+            >
+              <i class="fab fa-instagram group-hover:scale-110 transition"></i>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="skills" class="py-32 bg-black overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-20 reveal">
+          <h2
+            class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4 text-white"
+          >
+            Tech <span class="text-gray-600">Stack</span>
+          </h2>
+          <div class="h-1 w-20 bg-white"></div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal"
+        >
+          <div
+            class="group relative p-8 bg-[#0a0a0a] border border-white/5 hover:border-white/40 transition-all duration-500 overflow-hidden"
+          >
+            <div
+              class="absolute -right-4 -top-4 text-6xl opacity-[0.03] group-hover:opacity-10 transition-opacity font-black italic"
+            >
+              01
+            </div>
+
+            <div class="relative z-10">
+              <i
+                class="fab fa-html5 text-4xl mb-6 text-gray-400 group-hover:text-white transition-colors duration-500"
+              ></i>
+              <h3 class="text-lg font-bold tracking-widest uppercase mb-2">
+                Web Core
+              </h3>
+              <p class="text-xs text-gray-500 italic mb-6">
+                Semantic HTML5 & Modern CSS3
+              </p>
+
+              <div class="w-full h-[1px] bg-white/10 relative">
+                <div
+                  class="absolute top-0 left-0 h-full bg-white w-0 group-hover:w-[90%] transition-all duration-1000 ease-out"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative p-8 bg-[#0a0a0a] border border-white/5 hover:border-white/40 transition-all duration-500 overflow-hidden"
+          >
+            <div
+              class="absolute -right-4 -top-4 text-6xl opacity-[0.03] group-hover:opacity-10 transition-opacity font-black italic"
+            >
+              02
+            </div>
+
+            <div class="relative z-10">
+              <i
+                class="fab fa-js text-4xl mb-6 text-gray-400 group-hover:text-white transition-colors duration-500"
+              ></i>
+              <h3 class="text-lg font-bold tracking-widest uppercase mb-2">
+                JavaScript
+              </h3>
+              <p class="text-xs text-gray-500 italic mb-6">
+                ES6+, DOM Manipulation, Async
+              </p>
+
+              <div class="w-full h-[1px] bg-white/10 relative">
+                <div
+                  class="absolute top-0 left-0 h-full bg-white w-0 group-hover:w-[80%] transition-all duration-1000 ease-out"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative p-8 bg-[#0a0a0a] border border-white/5 hover:border-white/40 transition-all duration-500 overflow-hidden"
+          >
+            <div
+              class="absolute -right-4 -top-4 text-6xl opacity-[0.03] group-hover:opacity-10 transition-opacity font-black italic"
+            >
+              03
+            </div>
+
+            <div class="relative z-10">
+              <i
+                class="fab fa-python text-4xl mb-6 text-gray-400 group-hover:text-white transition-colors duration-500"
+              ></i>
+              <h3 class="text-lg font-bold tracking-widest uppercase mb-2">
+                Python
+              </h3>
+              <p class="text-xs text-gray-500 italic mb-6">
+                Automation & Data Analysis
+              </p>
+
+              <div class="w-full h-[1px] bg-white/10 relative">
+                <div
+                  class="absolute top-0 left-0 h-full bg-white w-0 group-hover:w-[85%] transition-all duration-1000 ease-out"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative p-8 bg-[#0a0a0a] border border-white/5 hover:border-white/40 transition-all duration-500 overflow-hidden"
+          >
+            <div
+              class="absolute -right-4 -top-4 text-6xl opacity-[0.03] group-hover:opacity-10 transition-opacity font-black italic"
+            >
+              04
+            </div>
+
+            <div class="relative z-10">
+              <i
+                class="fas fa-shield-alt text-4xl mb-6 text-gray-400 group-hover:text-white transition-colors duration-500"
+              ></i>
+              <h3 class="text-lg font-bold tracking-widest uppercase mb-2">
+                CyberSec
+              </h3>
+              <p class="text-xs text-gray-500 italic mb-6">
+                Vulnerability & Pen-Testing
+              </p>
+
+              <div class="w-full h-[1px] bg-white/10 relative">
+                <div
+                  class="absolute top-0 left-0 h-full bg-white w-0 group-hover:w-[75%] transition-all duration-1000 ease-out"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20 text-center reveal">
+          <p class="text-[10px] tracking-[0.5em] text-gray-600 uppercase">
+            Always learning, always evolving
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="projects" class="py-32 bg-[#050505]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-20 reveal"
+        >
+          <div class="max-w-2xl">
+            <h2
+              class="text-6xl md:text-8xl font-black italic uppercase tracking-tighter leading-none"
+            >
+              Selected <br />
+              <span
+                class="text-gray-600 group-hover:text-white transition-colors duration-500"
+                >Works</span
+              >
+            </h2>
+          </div>
+          <div class="hidden md:block text-right">
+            <p class="text-gray-500 text-xs tracking-[0.4em] uppercase mb-2">
+              Portfolio Volume 1.0
+            </p>
+            <div class="h-px w-32 bg-gray-800 ml-auto"></div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-24">
+          <div class="group reveal relative">
+            <div
+              class="relative overflow-hidden bg-zinc-900 aspect-[16/10] mb-8 border border-white/5"
+            >
+              <div
+                class="absolute top-6 left-6 z-20 font-black text-4xl opacity-20 group-hover:opacity-100 transition-opacity duration-500"
+              >
+                01
+              </div>
+
+              <img
+                src="assets/1.jpg"
+                alt="TakeGo"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000 ease-in-out"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8"
+              >
+                <span
+                  class="text-xs tracking-[0.3em] font-bold uppercase text-white"
+                  >View Full Case Study</span
+                >
+              </div>
+            </div>
+
+            <div class="flex justify-between items-start">
+              <div class="space-y-2">
+                <h3
+                  class="text-3xl font-black uppercase italic tracking-tighter"
+                >
+                  TakeGo
+                </h3>
+                <div class="flex gap-3">
+                  <span
+                    class="text-[10px] tracking-widest uppercase px-2 py-1 border border-white/20 text-gray-400 font-bold"
+                    >Kotlin</span
+                  >
+                  <span
+                    class="text-[10px] tracking-widest uppercase px-2 py-1 border border-white/20 text-gray-400 font-bold"
+                    >Android</span
+                  >
+                </div>
+              </div>
+              <div class="flex space-x-4 pt-2">
+                <a
+                  href="#"
+                  class="text-gray-500 hover:text-white transition transform hover:-rotate-45"
+                >
+                  <i class="fas fa-arrow-right text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+            </div>
+            <p
+              class="mt-4 text-gray-500 text-sm italic max-w-sm leading-relaxed"
+            >
+              Sistem transportasi cerdas yang mengutamakan kecepatan dan
+              pengalaman pengguna yang intuitif.
+            </p>
+          </div>
+
+          <div class="group reveal relative md:mt-32">
+            <div
+              class="relative overflow-hidden bg-zinc-900 aspect-[16/10] mb-8 border border-white/5"
+            >
+              <div
+                class="absolute top-6 left-6 z-20 font-black text-4xl opacity-20 group-hover:opacity-100 transition-opacity duration-500"
+              >
+                02
+              </div>
+
+              <img
+                src="assets/image.png"
+                alt="Exshoestic"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000 ease-in-out"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8"
+              >
+                <span
+                  class="text-xs tracking-[0.3em] font-bold uppercase text-white"
+                  >View Full Case Study</span
+                >
+              </div>
+            </div>
+
+            <div class="flex justify-between items-start">
+              <div class="space-y-2">
+                <h3
+                  class="text-3xl font-black uppercase italic tracking-tighter"
+                >
+                  Exshoestic
+                </h3>
+                <div class="flex gap-3">
+                  <span
+                    class="text-[10px] tracking-widest uppercase px-2 py-1 border border-white/20 text-gray-400 font-bold"
+                    >Web App</span
+                  >
+                  <span
+                    class="text-[10px] tracking-widest uppercase px-2 py-1 border border-white/20 text-gray-400 font-bold"
+                    >SQL</span
+                  >
+                </div>
+              </div>
+              <div class="flex space-x-4 pt-2">
+                <a
+                  href="#"
+                  class="text-gray-500 hover:text-white transition transform hover:-rotate-45"
+                >
+                  <i class="fas fa-arrow-right text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+            </div>
+            <p
+              class="mt-4 text-gray-500 text-sm italic max-w-sm leading-relaxed"
+            >
+              Inovasi platform digital untuk layanan cuci sepatu premium dengan
+              sistem pelacakan otomatis.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-32 text-center reveal">
+          <a
+            href="https://github.com/Isan955"
+            class="inline-block text-xs font-bold tracking-[0.5em] uppercase border-b border-gray-800 pb-2 hover:border-white transition-all duration-500"
+          >
+            Explore More on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="relative py-40 bg-white text-black overflow-hidden reveal"
+    >
+      <div
+        class="absolute top-0 left-0 w-full overflow-hidden opacity-[0.03] pointer-events-none select-none"
+      >
+        <div
+          class="whitespace-nowrap text-[15rem] font-black italic tracking-tighter animate-marquee"
+        >
+          LET'S WORK TOGETHER — GET IN TOUCH — LET'S WORK TOGETHER — GET IN
+          TOUCH —
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+        <h2
+          class="text-xs uppercase tracking-[0.6em] mb-16 font-black text-gray-400"
+        >
+          Available for new opportunities
+        </h2>
+
+        <div class="group inline-block relative">
+          <p
+            class="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            Click to copy email
+          </p>
+
+          <button
+            onclick="copyEmail()"
+            class="relative text-3xl md:text-7xl font-black italic tracking-tighter break-words hover:text-gray-500 transition-all duration-500 cursor-pointer"
+            id="email-display"
+          >
+            contacthasanforbusiness<br class="md:hidden" />@gmail.com
+          </button>
+
+          <div
+            id="copy-toast"
+            class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] tracking-[0.3em] px-6 py-3 rounded-full opacity-0 transition-opacity duration-300 pointer-events-none uppercase font-bold"
+          >
+            Email Copied to Clipboard
+          </div>
+        </div>
+
+        <div class="mt-32 flex flex-wrap justify-center gap-x-16 gap-y-8">
+          <a href="#" class="group flex flex-col items-center">
+            <span
+              class="text-[10px] font-black tracking-[0.4em] mb-2 group-hover:translate-y-[-5px] transition-transform duration-300"
+              >INSTAGRAM</span
+            >
+            <div
+              class="h-px w-0 bg-black group-hover:w-full transition-all duration-500"
+            ></div>
+          </a>
+          <a href="#" class="group flex flex-col items-center">
+            <span
+              class="text-[10px] font-black tracking-[0.4em] mb-2 group-hover:translate-y-[-5px] transition-transform duration-300"
+              >LINKEDIN</span
+            >
+            <div
+              class="h-px w-0 bg-black group-hover:w-full transition-all duration-500"
+            ></div>
+          </a>
+          <a href="#" class="group flex flex-col items-center">
+            <span
+              class="text-[10px] font-black tracking-[0.4em] mb-2 group-hover:translate-y-[-5px] transition-transform duration-300"
+              >GITHUB</span
+            >
+            <div
+              class="h-px w-0 bg-black group-hover:w-full transition-all duration-500"
+            ></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* Animasi Teks Berjalan di Background */
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-marquee {
+        display: inline-block;
+        animation: marquee 30s linear infinite;
+      }
+    </style>
 
     <script>
       const menuBtn = document.getElementById("menu-btn");
       const sidebar = document.getElementById("sidebar");
       const closeBtn = document.getElementById("close-btn");
+      const navLinks = document.querySelectorAll(".nav-link"); // Ambil semua link
 
-      menuBtn.addEventListener("click", () => {
+      // Fungsi untuk Membuka Sidebar
+      menuBtn.onclick = () => {
         sidebar.style.left = "0";
+      };
+
+      // Fungsi untuk Menutup Sidebar
+      const closeSidebar = () => {
+        sidebar.style.left = "-100%";
+      };
+
+      closeBtn.onclick = closeSidebar;
+
+      // OTOMATIS TUTUP: Ketika salah satu menu diklik
+      navLinks.forEach((link) => {
+        link.onclick = () => {
+          closeSidebar();
+        };
       });
 
-      closeBtn.addEventListener("click", () => {
-        sidebar.style.left = "-250px";
-      });
-    </script>
-
-    <section
-      class="flex flex-col items-center justify-center h-screen text-center px-6"
-    >
-      <h1 class="text-5xl md:text-6xl font-extrabold">
-        Hallo, Aku
-        <span class="text-gray-400 typing"></span>
-      </h1>
-      <p class="mt-4 text-lg text-gray-300">
-        Student | Web Developer | CySec Enthusiast
-      </p>
-      <div class="mt-6 space-x-4">
-        <a
-          href="#projects"
-          class="px-6 py-2 border border-white rounded-lg hover:bg-white hover:text-black transition transform hover:scale-110 duration-300"
-        >
-          View Projects
-        </a>
-        <a
-          href="#contact"
-          class="px-6 py-2 border border-gray-400 rounded-lg hover:bg-gray-400 hover:text-black transition transform hover:scale-110 duration-300"
-        >
-          Contact Me
-        </a>
-      </div>
-
-      <div class="flex space-x-6 mt-8 text-3xl">
-        <a
-          href="https://github.com/Isan955"
-          target="_blank"
-          class="hover:text-gray-400 transform hover:scale-125 transition duration-300"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/muhammad-hasanuddin-aa77862ba/"
-          target="_blank"
-          class="hover:text-gray-400 transform hover:scale-125 transition duration-300"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a
-          href="https://instagram.com/hasannn.py"
-          target="_blank"
-          class="hover:text-gray-400 transform hover:scale-125 transition duration-300"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-    </section>
-
-    <script>
-      const texts = ["Hasan", "Web Developer", "CySec Enthusiast"];
+      // Typing Effect (Tetap sama seperti sebelumnya)
+      const texts = ["Hasan", "Developer", "Security Enthusiast"];
       let count = 0;
       let index = 0;
       let currentText = "";
       let letter = "";
+      let isDeleting = false;
 
       (function type() {
-        if (count === texts.length) {
-          count = 0;
-        }
         currentText = texts[count];
-        letter = currentText.slice(0, ++index);
-
-        document.querySelector(".typing").textContent = letter;
-        if (letter.length === currentText.length) {
-          count++;
-          index = 0;
-          setTimeout(type, 1000);
+        if (isDeleting) {
+          letter = currentText.slice(0, --index);
         } else {
-          setTimeout(type, 150);
+          letter = currentText.slice(0, ++index);
         }
+        const typingElement = document.querySelector(".typing");
+        if (typingElement) typingElement.textContent = letter;
+
+        let speed = isDeleting ? 100 : 200;
+        if (!isDeleting && letter.length === currentText.length) {
+          speed = 1500;
+          isDeleting = true;
+        } else if (isDeleting && letter.length === 0) {
+          isDeleting = false;
+          count = (count + 1) % texts.length;
+          speed = 500;
+        }
+        setTimeout(type, speed);
       })();
+
+      // Reveal on Scroll Logic
+      window.addEventListener("scroll", () => {
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach((reveal) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = reveal.getBoundingClientRect().top;
+          if (revealTop < windowHeight - 100) {
+            reveal.classList.add("active");
+          }
+        });
+      });
     </script>
-
-    <section id="about" class="py-20 bg-black text-white">
-      <div
-        class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center md:space-x-12"
-      >
-        <div class="md:w-1/3 flex justify-center mb-10 md:mb-0">
-          <img
-            src="assets/gambar.jpg"
-            alt="Profile"
-            class="w-60 h-60 object-cover rounded-full border-10 border-white shadow-xl transform hover:scale-105 transition duration-500 grayscale hover:grayscale-0"
-          />
-        </div>
-
-        <div class="md:w-2/3 text-center md:text-left">
-          <h2 class="text-4xl font-bold mb-4 relative inline-block">
-            About Me
-            <!-- <span class="block w-25 h-1 bg-gray-500 mt-2"></span> -->
-          </h2>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            Halo, saya <span class="text-white font-semibold">Hasan</span>.
-            Seorang Mahasiswa IT yang tertarik pada
-            <span class="text-gray-200">Web Dev</span>
-            dan <span class="text-gray-200">CySec</span>. Saya senang membangun
-            project, memecahkan masalah, dan terus belajar teknologi baru.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-            <div
-              class="p-6 rounded-xl bg-gray-900 hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-            >
-              <h3 class="text-xl font-semibold text-white mb-2">Web Dev</h3>
-              <p class="text-gray-400 text-sm">
-                Membangun website modern & interaktif.
-              </p>
-            </div>
-            <div
-              class="p-6 rounded-xl bg-gray-900 hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-            >
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Cyber Security
-              </h3>
-              <p class="text-gray-400 text-sm">
-                Fokus pada keamanan jaringan & sistem.
-              </p>
-            </div>
-            <div
-              class="p-6 rounded-xl bg-gray-900 hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-            >
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Problem Solving
-              </h3>
-              <p class="text-gray-400 text-sm">
-                Menyelesaikan masalah dengan solusi kreatif.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <div class="flex items-center justify-center my-8">
-      <div class="h-px w-1/3 bg-gray-700"></div>
-      <span class="mx-4 text-gray-400">✦</span>
-      <div class="h-px w-1/3 bg-gray-700"></div>
-    </div> -->
-
-    <section id="skills" class="py-20 bg-black text-white">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-12">⚡ Skills</h2>
-
-        <div class="flex flex-wrap justify-center gap-12">
-          <div
-            class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
-          >
-            <svg
-              class="absolute w-32 h-32 transform -rotate-90"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="gray"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="white"
-                stroke-width="8"
-                fill="none"
-                stroke-dasharray="282.6"
-                stroke-dashoffset="28.26"
-                class="transition-all duration-1000 group-hover:stroke-gray-200"
-              />
-            </svg>
-            <div
-              class="relative flex flex-col items-center justify-center text-white font-bold"
-            >
-              <i class="fab fa-html5 text-4xl mb-1"></i>
-              <span class="text-sm opacity-80">Basic Web</span>
-              <span class="text-xs mt-1 opacity-60">90%</span>
-            </div>
-          </div>
-
-          <div
-            class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
-          >
-            <svg
-              class="absolute w-32 h-32 transform -rotate-90"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="gray"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="white"
-                stroke-width="8"
-                fill="none"
-                stroke-dasharray="282.6"
-                stroke-dashoffset="84.78"
-                class="transition-all duration-1000 group-hover:stroke-gray-200"
-              />
-            </svg>
-            <div
-              class="relative flex flex-col items-center justify-center text-white font-bold"
-            >
-              <i class="fab fa-js text-4xl mb-1"></i>
-              <span class="text-sm opacity-80">JavaScript</span>
-              <span class="text-xs mt-1 opacity-60">70%</span>
-            </div>
-          </div>
-
-          <div
-            class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
-          >
-            <svg
-              class="absolute w-32 h-32 transform -rotate-90"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="gray"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="white"
-                stroke-width="8"
-                fill="none"
-                stroke-dasharray="282.6"
-                stroke-dashoffset="56.52"
-                class="transition-all duration-1000 group-hover:stroke-gray-200"
-              />
-            </svg>
-            <div
-              class="relative flex flex-col items-center justify-center text-white font-bold"
-            >
-              <i class="fab fa-python text-4xl mb-1"></i>
-              <span class="text-sm opacity-80">Python</span>
-              <span class="text-xs mt-1 opacity-60">80%</span>
-            </div>
-          </div>
-
-          <div
-            class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
-          >
-            <svg
-              class="absolute w-32 h-32 transform -rotate-90"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="gray"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="white"
-                stroke-width="8"
-                fill="none"
-                stroke-dasharray="282.6"
-                stroke-dashoffset="84.78"
-                class="transition-all duration-1000 group-hover:stroke-gray-200"
-              />
-            </svg>
-            <div
-              class="relative flex flex-col items-center justify-center text-white font-bold"
-            >
-              <i class="fas fa-shield-alt text-4xl mb-1"></i>
-              <span class="text-sm opacity-80">CySec</span>
-              <span class="text-xs mt-1 opacity-60">50%</span>
-            </div>
-          </div>
-
-          <div
-            class="group relative w-32 h-32 rounded-full bg-gray-900 shadow-lg flex items-center justify-center hover:scale-105 transition transform duration-500 hover:shadow-[0_0_20px_white]"
-          >
-            <svg
-              class="absolute w-32 h-32 transform -rotate-90"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="gray"
-                stroke-width="8"
-                fill="none"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                stroke="white"
-                stroke-width="8"
-                fill="none"
-                stroke-dasharray="282.6"
-                stroke-dashoffset="110.39"
-                class="transition-all duration-1000 group-hover:stroke-gray-200"
-              />
-            </svg>
-            <div
-              class="relative flex flex-col items-center justify-center text-white font-bold"
-            >
-              <i class="fas fa-network-wired text-4xl mb-1"></i>
-              <span class="text-sm opacity-80">Networking</span>
-              <span class="text-xs mt-1 opacity-60">60%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="flex items-center justify-center my-8">
-      <div class="h-px w-1/3 bg-gray-700"></div>
-      <span class="mx-4 text-gray-400">✦</span>
-      <div class="h-px w-1/3 bg-gray-700"></div>
-    </div>
-
-    <section id="projects" class="py-20 bg-black text-white">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="assets/1.jpg"
-              alt="Project 1"
-              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-            />
-            <div
-              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
-            >
-              <h3 class="text-2xl font-bold mb-2">TakeGo</h3>
-              <p class="text-gray-300 mb-4 px-4">
-                Aplikasi transportasi mirip Grab, dibuat dengan Kotlin.
-              </p>
-              <div class="space-x-4">
-                <a
-                  href="https://github.com/Isan955/TakeGo-UAS"
-                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
-                  >Demo</a
-                >
-                <a
-                  href="https://github.com/Isan955/TakeGo-UAS"
-                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
-                  >Code</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="assets/image.png"
-              alt="Project 2"
-              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-            />
-            <div
-              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
-            >
-              <h3 class="text-2xl font-bold mb-2">Exshoestic</h3>
-              <p class="text-gray-300 mb-4 px-4">
-                Sistem pemesanan layanan cuci sepatu dengan 2 role user.
-              </p>
-              <div class="space-x-4">
-                <a
-                  href="https://github.com/Isan955/Exshoestic-UAS"
-                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
-                  >Demo</a
-                >
-                <a
-                  href="https://github.com/Isan955/Exshoestic-UAS"
-                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
-                  >Code</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="assets/cbot.png"
-              alt="Project 3"
-              class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
-            />
-            <div
-              class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-500"
-            >
-              <h3 class="text-2xl font-bold mb-2">Ysan Chatbot</h3>
-              <p class="text-gray-300 mb-4 px-4">chatbot..</p>
-              <div class="space-x-4">
-                <a
-                  href="https://github.com/Isan955/ysan-cbot"
-                  class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
-                  >Demo</a
-                >
-                <a
-                  href="https://github.com/Isan955/ysan-cbot"
-                  class="px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black"
-                  >Code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="py-20 bg-black text-white">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-12">Experience</h2>
-
-        <div class="relative border-l-2 border-gray-600">
-          <div
-            class="mb-10 ml-6 group transition-transform duration-300 hover:scale-105"
-          >
-            <div
-              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600 group-hover:bg-gray-400 transition-colors duration-300"
-            ></div>
-            <h3
-              class="text-xl font-semibold group-hover:text-gray-200 transition-colors duration-300"
-            >
-              Junior Web Developer - Komdigi
-            </h3>
-            <p class="text-gray-400 text-sm">Agustus 2025 - Oktober2025</p>
-            <p class="mt-2 text-gray-300">
-              Mengikuti pelatihan sebagai junior web developer yang
-              diselenggarakan oleh Komdigi.
-            </p>
-          </div>
-
-          <div
-            class="mb-10 ml-6 group transition-transform duration-300 hover:scale-105"
-          >
-            <div
-              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600 group-hover:bg-gray-400 transition-colors duration-300"
-            ></div>
-            <h3
-              class="text-xl font-semibold group-hover:text-gray-200 transition-colors duration-300"
-            >
-              Freelance - Web Developer
-            </h3>
-            <p class="text-gray-400 text-sm">Jul 2024 - Saat ini</p>
-            <p class="mt-2 text-gray-300">
-              Mengerjakan beberapa proyek website portofolio, sistem booking,
-              dan aplikasi sederhana.
-            </p>
-          </div>
-
-          <div
-            class="mb-10 ml-6 group transition-transform duration-300 hover:scale-105"
-          >
-            <div
-              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600 group-hover:bg-gray-400 transition-colors duration-300"
-            ></div>
-            <h3
-              class="text-xl font-semibold group-hover:text-gray-200 transition-colors duration-300"
-            >
-              Freelance - Laptop Service
-            </h3>
-            <p class="text-gray-400 text-sm">2025 - Saat ini</p>
-            <p class="mt-2 text-gray-300">
-              Melayani kebutuhan servis laptop, upgrade hardware, dan instalasi
-              software.
-            </p>
-          </div>
-
-          <div
-            class="ml-6 group transition-transform duration-300 hover:scale-105"
-          >
-            <div
-              class="absolute w-4 h-4 bg-white rounded-full -left-2 border-2 border-gray-600 group-hover:bg-gray-400 transition-colors duration-300"
-            ></div>
-            <h3
-              class="text-xl font-semibold group-hover:text-gray-200 transition-colors duration-300"
-            >
-              Volunteer - Ekonomi Pariwisata
-            </h3>
-            <p class="text-gray-400 text-sm">Januari 2025</p>
-            <p class="mt-2 text-gray-300">
-              Membantu UMKM memajukan usaha mereka melalui digitalisasi dengan
-              membuatkan landing page sederhana
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="max-w-4xl mx-auto py-20 px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 border-b border-gray-700 inline-block">
-        Contact
-      </h2>
-      <p class="text-gray-300 mb-6">Ingin berkolaborasi? Hubungi saya 👇</p>
-      <a
-        href="mailto:youremail@gmail.com"
-        class="px-6 py-3 border border-white rounded-lg hover:bg-white hover:text-black transition"
-      >
-        Email Me
-      </a>
-    </section>
-
-    <!-- Footer -->
-    <!-- <footer class="text-center py-6 border-t border-gray-800">
-      <p class="text-gray-500">© 2025 Your Name. All rights reserved.</p>
-    </footer> -->
   </body>
 </html>
